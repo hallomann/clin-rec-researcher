@@ -23,6 +23,5 @@ def readclinrec(link):
             fullmcb.append(clindict.thisdict[mcb[i]])
         except:
             print(f'mcb-10 designation {mcb[i]} is not in dictionary')
-    fullmcb=', '.join(fullmcb)
     csvline=[id,name,link,fullmcb]
     return(csvline)
