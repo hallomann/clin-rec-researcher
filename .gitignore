@@ -32,8 +32,5 @@ logs/
 # Browser cache
 *.cache
 
-# Output files (optional, если не хотите хранить в репо)
+# Output files
 output.csv
-clinrec_flat.csv
-lab_criteria.csv
-missing_codes.txt
