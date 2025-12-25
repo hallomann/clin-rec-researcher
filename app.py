@@ -20,7 +20,7 @@ def search():
     if not code:
         results = []
     else:
-        results = df[df["МКБ-10"].str.contains(f"^{code}", na=False, regex=False)]
+        results = df[df['МКБ-10'] == code]
         results = results.to_dict(orient="records")
     return render_template("search.html", code=code, results=results)
 

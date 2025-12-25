@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<h2>Поиск клинических рекомендаций по МКБ-10</h2>
+<form action="/search" method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-8">
+            <select name="code" class="form-select" required>
+                <option value="">— Выберите код МКБ-10 —</option>
+                {% for mkb in mkb_list %}
+                <option value="{{ mkb }}">{{ mkb }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">Найти</button>
+        </div>
+    </div>
+</form>
+<p class="text-muted">
+    Данные собраны из
+    <a href="https://cr.minzdrav.gov.ru/" target="_blank"
+        >Рубрикатора клинических рекомендаций Минздрава РФ</a
+    >.
+</p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+<h2>Результаты по запросу: "{{ code }}"</h2>
+<a href="/" class="btn btn-secondary mb-3">← Назад</a>
+
+{% if results %}
+<ul class="list-group">
+    {% for rec in results %}
+    <li class="list-group-item">
+        <strong>{{ rec['Имя'] }}</strong><br />
+        <small class="text-muted">{{ rec['МКБ-10'] }}</small><br />
+        <a
+            href="{{ rec['link'] }}"
+            target="_blank"
+            class="btn btn-outline-primary btn-sm mt-2"
+            >Открыть рекомендацию</a
+        >
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<div class="alert alert-warning">Ничего не найдено.</div>
+{% endif %} {% endblock %}
