@@ -49,7 +49,7 @@
                     records = data;
                     const select = document.getElementById("mkbSelect");
                     const uniqueMKB = [
-                        ...new Set(data.map((r) => r["МКБ-10"])),
+                        ...new Set(data.map((r) => r["mcb"])),
                     ].sort();
                     uniqueMKB.forEach((mkb) => {
                         const opt = document.createElement("option");
@@ -74,11 +74,11 @@
 
                     if (!code) {
                         resultsDiv.innerHTML =
-                            '<div class="alert alert-warning">Выберите код МКБ-10</div>';
+                            '<div class="alert alert-warning">Выберите код mcb</div>';
                         return;
                     }
 
-                    const matches = records.filter((r) => r["МКБ-10"] === code);
+                    const matches = records.filter((r) => r["mcb"] === code);
                     if (matches.length === 0) {
                         resultsDiv.innerHTML =
                             '<div class="alert alert-warning">Ничего не найдено</div>';
@@ -92,13 +92,13 @@
                             <div class="col-md-6 mb-3">
                                 <div class="card result-card">
                                 <div class="card-body">
-                                    <h6 class="card-title">${rec.Имя}</h6>
-                                    <small class="text-muted">${rec["МКБ-10"]}</small><br>
+                                    <h6 class="card-title">${rec.name}</h6>
+                                    <small class="text-muted">${rec["mcb"]}</small><br>
                                     <a href="${rec.link}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Открыть рекомендацию</a>
                                 </div>
                                 </div>
                             </div>`;
-                        });
+                    });
                     html += "</div>";
                     resultsDiv.innerHTML = html;
                 });
