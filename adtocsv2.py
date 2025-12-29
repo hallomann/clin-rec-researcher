@@ -15,8 +15,8 @@ for i in data[3]:
         ],
         ignore_index=True,
     )
-df2 = pd.read_csv("out.csv")
+df2 = pd.read_csv("data/out.csv")
 df2 = df2[df2.ID != data[0]]
 ndf = pd.concat([df2, df1])
 ndf = ndf.sort_values(by="МКБ-10")
-ndf.to_csv("out.csv", index=False)
+ndf.to_csv("data/out.csv", index=False)
