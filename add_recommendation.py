@@ -19,17 +19,16 @@ def main():
         result = subprocess.run(
             [sys.executable, "adtocsv2.py"], input=link, text=True, capture_output=True
         )
-        if result.returncode == 0:
+        if "not in dictionary" in result.stdout:
+            print("\n❌ Ошибка при добавлении:")
+            print(result.stdout)
+            print("\n❗ Найдены неизвестные коды МКБ-10.")
+            print("Вы можете добавить их вручную — запустите: python massdict.py, после чего перезапустите функцию")    
+        else:
             print("\n✅ Рекомендация успешно добавлена в data/out.csv!")
             print(
                 "Теперь перезапустите веб-приложение."
             )
-        else:
-            print("\n❌ Ошибка при добавлении:")
-            print(result.stderr)
-            if "not in dictionary" in result.stderr:
-                print("\n❗ Найдены неизвестные коды МКБ-10.")
-                print("Вы можете добавить их вручную — запустите: python massdict.py")
     except Exception as e:
         print(f"\n💥 Критическая ошибка: {e}")
 
